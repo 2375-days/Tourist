@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Tourist.models
+namespace Tourist.API.models
 {
     public class TouristRoutePicture
     {

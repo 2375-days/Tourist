@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Tourist.models;
+using Tourist.API.models;
 
-namespace Tourist.services
+namespace Tourist.API.services
 {
     public class MockTouristRouteRepository : ITouristRouteRepository
     {
@@ -16,7 +16,7 @@ namespace Tourist.services
             }
         }
 
-        public List<TouristRoute> InitializeTouristRoute()
+        public void InitializeTouristRoute()
         {
             _routes = new List<TouristRoute>
             {
@@ -38,7 +38,6 @@ namespace Tourist.services
                     Notes="<p>小心危险</p>"
                 }
             };
-            return _routes;
         }
         public TouristRoute GetTouristRoute(Guid id)
         {

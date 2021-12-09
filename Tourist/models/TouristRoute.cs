@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Tourist.models
+namespace Tourist.API.models
 {
     public class TouristRoute
     {

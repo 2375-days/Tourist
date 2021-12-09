@@ -7,8 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Tourist.API.services;
 
-namespace Tourist
+namespace Tourist.API
 {
     public class Startup
     {
@@ -17,6 +18,8 @@ namespace Tourist
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            // DI“¿¿µ◊¢»Î  Addtransitent AddSingleton AddScoped
+            services.AddTransient<ITouristRouteRepository, MockTouristRouteRepository>();
 
         }
 
