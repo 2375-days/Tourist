@@ -28,7 +28,7 @@ namespace Tourist.API
             services.AddControllers();
 
             // DI“¿¿µ◊¢»Î  Addtransitent AddSingleton AddScoped
-            services.AddTransient<ITouristRouteRepository, MockTouristRouteRepository>();
+            services.AddTransient<ITouristRouteRepository, TouristRouteRepository>();
 
             services.AddDbContext<AppDbContext>(option => {
                 //option.UseSqlServer("Data Source=127.0.0.1;Initial Catalog=TEST;Persist Security Info=True;User ID=sa;Password=Abc123456");

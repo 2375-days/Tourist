@@ -10,10 +10,15 @@ namespace Tourist.API.database
 {
     public class AppDbContext:DbContext
     {
-        public AppDbContext(DbContextOptions options):base(options)
+        //不要忘记此处的泛型AppDbContext
+        public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
         {
 
         }
+
+        //不要忘记DbSet属性的 get set
+        public DbSet<TouristRoute> TouristRoutes { get; set; }
+        public DbSet<TouristRoutePicture> TouristRoutesPictures { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,7 +43,5 @@ namespace Tourist.API.database
             modelBuilder.Entity<TouristRoutePicture>().HasData(touristRoutePictures);
         }
 
-        public DbSet<TouristRoute> TouristRoutes;
-        public DbSet<TouristRoutePicture> TouristRoutesPictures;
     }
 }
