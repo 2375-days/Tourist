@@ -11,11 +11,11 @@ namespace Tourist.API.models
         public Guid Id { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(200)]
         public string Title { get; set; }
 
         [Required]
-        [MaxLength(1500)]
+        [MaxLength(2500)]
         public string Description { get; set; }
 
         [Column(TypeName ="decimal(18, 2)")]

@@ -26,12 +26,15 @@ namespace Tourist.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
             // DI“¿¿µ◊¢»Î  Addtransitent AddSingleton AddScoped
+            services.AddTransient<ITouristRouteRepository, MockTouristRouteRepository>();
+
             services.AddDbContext<AppDbContext>(option => {
                 //option.UseSqlServer("Data Source=127.0.0.1;Initial Catalog=TEST;Persist Security Info=True;User ID=sa;Password=Abc123456");
                 option.UseSqlServer(Configuration["DbContext:ConnectionString"]);
             });
-            services.AddTransient<ITouristRouteRepository, TouristRouteRepository>();
+            
 
         }
 
