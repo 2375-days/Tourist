@@ -3,13 +3,13 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using Tourist.API.models;
+using Tourist.API.Models;
 using System.Text;
 using System;
 
-namespace Tourist.API.controller
+namespace Tourist.API.Controller
 {
-    public class TestController : Controller
+    public class TestController : Microsoft.AspNetCore.Mvc.Controller
     {
         [Route("api/test")]
         public IEnumerable<string> Test()

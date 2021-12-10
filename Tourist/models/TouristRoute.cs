@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Tourist.API.models
+namespace Tourist.API.Models
 {
     public class TouristRoute
     {

@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 using System.Reflection;
-using Tourist.API.models;
+using Tourist.API.Models;
 
 namespace Tourist.API.database
 {

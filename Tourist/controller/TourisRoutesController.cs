@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Tourist.API.services;
+using Tourist.API.Services;
 
-namespace Tourist.API.controller
+namespace Tourist.API.Controller
 {
     [Route("api/[controller]")]
     [ApiController]

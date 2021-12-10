@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Tourist.API.database;
-using Tourist.API.models;
+using Tourist.API.Models;
 
-namespace Tourist.API.services
+namespace Tourist.API.Services
 {
     public class TouristRouteRepository : ITouristRouteRepository
     {

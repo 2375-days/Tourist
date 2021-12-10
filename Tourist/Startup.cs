@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Tourist.API.database;
-using Tourist.API.services;
+using Tourist.API.Services;
 
 namespace Tourist.API
 {

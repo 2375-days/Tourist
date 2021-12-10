@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Tourist.API.models;
+using Tourist.API.Models;
 
-namespace Tourist.API.services
+namespace Tourist.API.Services
 {
     public interface ITouristRouteRepository
     {
