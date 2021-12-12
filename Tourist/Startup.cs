@@ -40,8 +40,10 @@ namespace Tourist.API
                 //option.UseSqlServer("Data Source=127.0.0.1;Initial Catalog=TEST;Persist Security Info=True;User ID=sa;Password=Abc123456");
                 option.UseSqlServer(Configuration["DbContext:ConnectionString"]);
             });
-            
 
+            //É¨ÃèprofileÎÄ¼þ
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
