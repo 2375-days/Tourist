@@ -17,30 +17,30 @@ namespace Tourist.API.Services
         public TouristRoute GetTouristRoute(Guid id)
         {
             return _context.TouristRoutes
-                .Include(n => n.TouristRoutePictures)
-                .FirstOrDefault(n => n.Id == id);
+                .Include(t => t.TouristRoutePictures)
+                .FirstOrDefault(t => t.Id == id);
         }
 
         public IEnumerable<TouristRoute> GetTouristRoutes()
         {
             return _context.TouristRoutes
-                .Include(n => n.TouristRoutePictures);
+                .Include(t => t.TouristRoutePictures);
         }
 
         public bool TouristRouteExists(Guid id)
         {
-            return _context.TouristRoutes.Any(n => n.Id == id);
+            return _context.TouristRoutes.Any(t => t.Id == id);
         }
 
         public IEnumerable<TouristRoutePicture> GetPicturesByTouristRouteId(Guid touristRouteId)
         {
             return _context.TouristRoutesPictures
-                .Where(n => n.TouristRouteId == touristRouteId ).ToList();
+                .Where(t => t.TouristRouteId == touristRouteId ).ToList();
         }
 
         public TouristRoutePicture GetPicture(int pictureId)
         {
-            return _context.TouristRoutesPictures.FirstOrDefault(n => n.Id == pictureId);
+            return _context.TouristRoutesPictures.FirstOrDefault(t => t.Id == pictureId);
         }
     }
 }
