@@ -6,7 +6,7 @@ namespace Tourist.API.Services
 {
     public interface ITouristRouteRepository
     {
-        IEnumerable<TouristRoute> GetTouristRoutes();
+        IEnumerable<TouristRoute> GetTouristRoutes(string keyword);
         TouristRoute GetTouristRoute(Guid id);
         bool TouristRouteExists(Guid id);
         IEnumerable<TouristRoutePicture> GetPicturesByTouristRouteId(Guid touristRouteId);

@@ -14,17 +14,26 @@ namespace Tourist.API.Services
         {
             _context = context;
         }
+
+        public IEnumerable<TouristRoute> GetTouristRoutes(string keyword)
+        {
+            //var result = _context.TouristRoutes
+            //    .Include(t => t.TouristRoutePictures);
+            IQueryable<TouristRoute> result = _context.TouristRoutes
+                .Include(t => t.TouristRoutePictures);
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                keyword = keyword.Trim();
+                result = result.Where(t => t.Title.Contains(keyword));
+            }
+            return result.ToList();
+        }
+
         public TouristRoute GetTouristRoute(Guid id)
         {
             return _context.TouristRoutes
                 .Include(t => t.TouristRoutePictures)
                 .FirstOrDefault(t => t.Id == id);
-        }
-
-        public IEnumerable<TouristRoute> GetTouristRoutes()
-        {
-            return _context.TouristRoutes
-                .Include(t => t.TouristRoutePictures);
         }
 
         public bool TouristRouteExists(Guid id)
