@@ -16,7 +16,7 @@ namespace Tourist.API.Controller
         private readonly ITouristRouteRepository _touristRouteRepository;
         private readonly IMapper _mapper;
         public TouristRoutesController(
-            ITouristRouteRepository touristRouteRepository, 
+            ITouristRouteRepository touristRouteRepository,
             IMapper mapper)
         {
             _touristRouteRepository = touristRouteRepository;
@@ -24,9 +24,10 @@ namespace Tourist.API.Controller
         }
 
         [HttpGet]
+        [HttpHead]
         public IActionResult GetTouristRoutes()
-        { 
-            var routes =  _touristRouteRepository.GetTouristRoutes();
+        {
+            var routes = _touristRouteRepository.GetTouristRoutes();
             if (routes == null || routes.Count() <= 0) {
                 return NotFound("没有旅游路线");
             }
@@ -35,6 +36,7 @@ namespace Tourist.API.Controller
         }
 
         [HttpGet("{touristRouteId}")]
+        [HttpHead("{touristRouteId}")]
         public IActionResult GetTouristRoute(Guid touristRouteId)
         {
             var route = _touristRouteRepository.GetTouristRoute(touristRouteId);
