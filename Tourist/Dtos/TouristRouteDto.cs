@@ -37,5 +37,6 @@ namespace Tourist.API.Dtos
 
         public string DepartureCity { get; set; }
 
+        public ICollection<TouristRoutePictureDto> TouristRoutePictures { get; set; }
     }
 }

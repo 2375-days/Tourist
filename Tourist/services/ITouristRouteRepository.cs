@@ -8,5 +8,8 @@ namespace Tourist.API.Services
     {
         IEnumerable<TouristRoute> GetTouristRoutes();
         TouristRoute GetTouristRoute(Guid id);
+        bool TouristRouteExists(Guid id);
+        IEnumerable<TouristRoutePicture> GetPicturesByTouristRouteId(Guid touristRouteId);
+        TouristRoutePicture GetPicture(int pictureId);
     }
 }

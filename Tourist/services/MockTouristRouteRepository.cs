@@ -48,5 +48,20 @@ namespace Tourist.API.Services
         {
             return _routes;
         }
+
+        public IEnumerable<TouristRoutePicture> GetPicturesByTouristRouteId(Guid touristRouteId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool TouristRouteExists(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TouristRoutePicture GetPicture(int pictureId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
