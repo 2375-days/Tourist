@@ -11,5 +11,7 @@ namespace Tourist.API.Services
         bool TouristRouteExists(Guid id);
         IEnumerable<TouristRoutePicture> GetPicturesByTouristRouteId(Guid touristRouteId);
         TouristRoutePicture GetPicture(int pictureId);
+        void AddTouristRoute(TouristRoute touristRouteModel);
+        bool Save();
     }
 }

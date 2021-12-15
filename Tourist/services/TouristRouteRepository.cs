@@ -83,5 +83,19 @@ namespace Tourist.API.Services
         {
             return _context.TouristRoutesPictures.FirstOrDefault(t => t.Id == pictureId);
         }
+
+        public void AddTouristRoute(TouristRoute touristRoute)
+        {
+            if (touristRoute == null)
+            {
+                throw new ArgumentNullException(nameof(touristRoute));
+            }
+            _context.TouristRoutes.Add(touristRoute);
+        }
+
+        public bool Save()
+        {
+            return (_context.SaveChanges() >= 0);
+        }
     }
 }
