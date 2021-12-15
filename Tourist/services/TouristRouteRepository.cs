@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Tourist.API.database;
 using Tourist.API.Models;
+using Tourist.API.ResouceParameters;
 
 namespace Tourist.API.Services
 {
@@ -16,41 +17,22 @@ namespace Tourist.API.Services
             _context = context;
         }
 
-        public IEnumerable<TouristRoute> GetTouristRoutes(string keyword, string rating)
+        public IEnumerable<TouristRoute> GetTouristRoutes(string keyword, string ratingOperator, int? ratingValue)
         {
             //var result = _context.TouristRoutes
             //    .Include(t => t.TouristRoutePictures);
             IQueryable<TouristRoute> result = _context.TouristRoutes
                 .Include(t => t.TouristRoutePictures);
+
             if (!string.IsNullOrWhiteSpace(keyword))
             {
                 keyword = keyword.Trim();
                 result = result.Where(t => t.Title.Contains(keyword));
             }
-            if (!string.IsNullOrWhiteSpace(rating))
+
+            if (ratingValue != null)
             {
-                var regex = new Regex(@"([A-Za-z0-9\-]+)(\d+)");
-                string operatorType = "";
-                int ratingValue = -1;
-                Match match = regex.Match(rating);
-                if (match.Success)
-                {
-                    operatorType = match.Groups[1].Value;
-                    ratingValue = Int32.Parse(match.Groups[2].Value);
-                }
-                //switch (operatorType)
-                //{
-                //    case "largerThan":
-                //        result = result.Where(t => t.Rating >= ratingValue);
-                //        break;
-                //    case "lessThan":
-                //        result = result.Where(t => t.Rating <= ratingValue);
-                //        break;
-                //    case "equal":
-                //    default:
-                //        break;
-                //}
-                result = operatorType switch
+                result = ratingOperator switch
                 {
                     "largerThan" => result.Where(t => t.Rating >= ratingValue),
                     "lessThan" => result.Where(t => t.Rating <= ratingValue),
@@ -58,6 +40,7 @@ namespace Tourist.API.Services
                     _ => result.Where(t => t.Rating == ratingValue),
                 };
             }
+
             return result.ToList();
         }
 
