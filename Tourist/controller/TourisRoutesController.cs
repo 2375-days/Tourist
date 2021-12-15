@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Tourist.API.Services;
 using AutoMapper;
 using Tourist.API.Dtos;
+using Tourist.API.ResouceParameters;
 
 namespace Tourist.API.Controller
 {
@@ -26,10 +27,13 @@ namespace Tourist.API.Controller
         [HttpGet]
         [HttpHead]
         public IActionResult GetTouristRoutes(
-            [FromQuery]string keyword, 
-            [FromQuery]string rating)
+            [FromQuery]TouristRouteResourceParameters parameters)
         {
-            var routes = _touristRouteRepository.GetTouristRoutes(keyword, rating);
+            var routes = _touristRouteRepository.GetTouristRoutes(
+                parameters.Keyword,
+                parameters.RatingOperator,
+                parameters.RatingValue
+                );
             if (routes == null || routes.Count() <= 0) {
                 return NotFound("没有旅游路线");
             }
