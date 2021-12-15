@@ -7,6 +7,7 @@ using Tourist.API.Services;
 using AutoMapper;
 using Tourist.API.Dtos;
 using Tourist.API.ResouceParameters;
+using Tourist.API.Models;
 
 namespace Tourist.API.Controller
 {
