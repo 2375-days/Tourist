@@ -27,7 +27,7 @@ namespace Tourist.API.Controller
 
         [HttpGet]
         [HttpHead]
-        public IActionResult GetTouristRoutes(
+        public IActionResult GetTouristRoutes( 
             [FromQuery]TouristRouteResourceParameters parameters)
         {
             var routes = _touristRouteRepository.GetTouristRoutes(
@@ -63,12 +63,11 @@ namespace Tourist.API.Controller
             _touristRouteRepository.AddTouristRoute(touristRouteModel);
             _touristRouteRepository.Save();
             var touristRouteReturn = _mapper.Map<TouristRouteDto>(touristRouteModel);
+            
             return CreatedAtRoute(
                 "GetTouristRoute", 
                 new { touristRouteId = touristRouteReturn.Id}, 
                 touristRouteReturn);
-
         }
-
     }
 }

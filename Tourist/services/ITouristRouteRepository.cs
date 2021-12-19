@@ -14,5 +14,6 @@ namespace Tourist.API.Services
         TouristRoutePicture GetPicture(int pictureId);
         void AddTouristRoute(TouristRoute touristRouteModel);
         bool Save();
+        void AddTouristRoutePicture(Guid touristRouteId, TouristRoutePicture pictureModel);
     }
 }

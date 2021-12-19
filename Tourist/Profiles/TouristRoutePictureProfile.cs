@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using System;
+using Touris.API.Dto;
 using Tourist.API.Dtos;
 using Tourist.API.Models;
 
@@ -9,6 +11,8 @@ namespace Tourist.API.Profiles
         public TouristRoutePictureProfile()
         {
             CreateMap<TouristRoutePicture, TouristRoutePictureDto>();
+
+            CreateMap<TouristRoutePictureForCreationDto, TouristRoutePicture>();
         }
     }
 }

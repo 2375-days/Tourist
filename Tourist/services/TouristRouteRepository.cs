@@ -80,5 +80,19 @@ namespace Tourist.API.Services
         {
             return (_context.SaveChanges() >= 0);
         }
+
+        public void AddTouristRoutePicture(Guid touristRouteId, TouristRoutePicture pictureModel)
+        {
+            if (touristRouteId == Guid.Empty)
+            {
+                throw new ArgumentNullException(nameof(touristRouteId));
+            }
+            if (pictureModel == null)
+            {
+                throw new ArgumentNullException(nameof(pictureModel));
+            }
+            pictureModel.TouristRouteId = touristRouteId;
+            _context.TouristRoutesPictures.Add(pictureModel);
+        }
     }
 }
