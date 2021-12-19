@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using System;
-using Touris.API.Dto;
+using Tourist.API.Dtos;
 using Tourist.API.Dtos;
 using Tourist.API.Models;
 

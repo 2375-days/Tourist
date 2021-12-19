@@ -1,4 +1,4 @@
-﻿namespace Touris.API.Dto
+﻿namespace Tourist.API.Dtos
 {
     public class TouristRoutePictureForCreationDto
     {

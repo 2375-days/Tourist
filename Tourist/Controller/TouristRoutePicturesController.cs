@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Tourist.API.Services;
 using Tourist.API.Dtos;
 using AutoMapper;
- using Touris.API.Dto;
 using Tourist.API.Models;
 
 namespace Tourist.API.Controller
