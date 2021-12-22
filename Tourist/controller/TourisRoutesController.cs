@@ -69,5 +69,22 @@ namespace Tourist.API.Controller
                 new { touristRouteId = touristRouteReturn.Id}, 
                 touristRouteReturn);
         }
+
+        [HttpPut("{touristRouteId}")]
+        public IActionResult UpdateTouristRoute(
+            [FromRoute] Guid touristRouteId,
+            [FromBody] TouristRouteForUpdateDto touristRouteForUpdateDto)
+        {
+            if (!_touristRouteRepository.TouristRouteExists(touristRouteId))
+            {
+                return NotFound("旅游路线不存在");
+            }
+
+            var touristRoute = _touristRouteRepository.GetTouristRoute(touristRouteId);
+            _mapper.Map(touristRouteForUpdateDto, touristRoute);
+            _touristRouteRepository.Save();
+
+            return NoContent();
+        }
     }
 }

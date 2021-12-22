@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using System;
 using Tourist.API.Dtos;
-using Tourist.API.Dtos;
 using Tourist.API.Models;
 
 namespace Tourist.API.Profiles

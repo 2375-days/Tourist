@@ -9,7 +9,7 @@ namespace Tourist.API.ValidationAttributes
             object value, 
             ValidationContext validationContext)
         {
-            var touristRouteDto = (TouristRouteForCreationDto)validationContext.ObjectInstance;
+            var touristRouteDto = (TouristRouteForManipulationDto)validationContext.ObjectInstance;
             if (touristRouteDto.Title == touristRouteDto.Description)
             {
                 return new ValidationResult(
