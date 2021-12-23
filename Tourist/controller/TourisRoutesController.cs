@@ -8,6 +8,7 @@ using AutoMapper;
 using Tourist.API.Dtos;
 using Tourist.API.ResouceParameters;
 using Tourist.API.Models;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace Tourist.API.Controller
 {
@@ -82,6 +83,28 @@ namespace Tourist.API.Controller
 
             var touristRoute = _touristRouteRepository.GetTouristRoute(touristRouteId);
             _mapper.Map(touristRouteForUpdateDto, touristRoute);
+            _touristRouteRepository.Save();
+
+            return NoContent();
+        }
+
+        [HttpPatch("{touristRouteId}")]
+        public IActionResult PartiallyUpdateTouristRoute(
+            [FromRoute] Guid touristRouteId,
+            [FromBody] JsonPatchDocument<TouristRouteForUpdateDto> patchDocument)
+        {
+            if (!_touristRouteRepository.TouristRouteExists(touristRouteId))
+            {
+                return NotFound("旅游路线不存在");
+            }
+            var touristRouteFromRepo = _touristRouteRepository.GetTouristRoute(touristRouteId);
+            var touristRouteToPatch = _mapper.Map<TouristRouteForUpdateDto>(touristRouteFromRepo);
+            patchDocument.ApplyTo(touristRouteToPatch, ModelState);
+            if (!TryValidateModel(touristRouteToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+            _mapper.Map(touristRouteToPatch, touristRouteFromRepo);
             _touristRouteRepository.Save();
 
             return NoContent();
