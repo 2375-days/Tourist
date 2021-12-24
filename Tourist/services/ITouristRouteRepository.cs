@@ -15,5 +15,7 @@ namespace Tourist.API.Services
         void AddTouristRoute(TouristRoute touristRouteModel);
         bool Save();
         void AddTouristRoutePicture(Guid touristRouteId, TouristRoutePicture pictureModel);
+        void DeleteTouristRoute(TouristRoute touristRoute);
+        void DeleteTouristRoutePicture(TouristRoutePicture picture);
     }
 }

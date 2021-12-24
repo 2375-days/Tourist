@@ -26,13 +26,13 @@ namespace Tourist.API.Controller
         }
 
         [HttpGet]
-        public IActionResult GetPicturesByTouristRouteId(Guid TouristRouteId)
+        public IActionResult GetPicturesByTouristRouteId(Guid touristRouteId)
         {
-            if (!_touristRouteRepository.TouristRouteExists(TouristRouteId))
+            if (!_touristRouteRepository.TouristRouteExists(touristRouteId))
             {
                 return NotFound("旅游路线不存在");
             }
-            var pictures = _touristRouteRepository.GetPicturesByTouristRouteId(TouristRouteId);
+            var pictures = _touristRouteRepository.GetPicturesByTouristRouteId(touristRouteId);
             if (pictures == null)
             {
                 return NotFound("图片资源不存在");
@@ -42,9 +42,9 @@ namespace Tourist.API.Controller
         }
 
         [HttpGet("{pictureId}", Name = "GetPicture")]
-        public IActionResult GetPicture(Guid TouristRouteId, int pictureId)
+        public IActionResult GetPicture(Guid touristRouteId, int pictureId)
         {
-            if (!_touristRouteRepository.TouristRouteExists(TouristRouteId))
+            if (!_touristRouteRepository.TouristRouteExists(touristRouteId))
             {
                 return NotFound("旅游路线不存在");
             }
@@ -56,7 +56,7 @@ namespace Tourist.API.Controller
             return Ok(_mapper.Map<TouristRoutePictureDto>(picture));
         }
 
-       [HttpPost]
+        [HttpPost]
         public IActionResult CreateTouristPicture(
            [FromRoute] Guid touristRouteId,
            [FromBody] TouristRoutePictureForCreationDto touristRoutePictureForCreationDto)
@@ -79,5 +79,26 @@ namespace Tourist.API.Controller
                 pictureToreturn
             );
         }
+
+        [HttpDelete("{pictureId}")]
+        public IActionResult DeletePicture(
+            [FromRoute] Guid touristRouteId,
+            [FromRoute] int pictureId)
+        {
+            if (!_touristRouteRepository.TouristRouteExists(touristRouteId))
+            {
+                return NotFound("旅游路线不存在");
+            }
+            var picture = _touristRouteRepository.GetPicture(pictureId);
+            if (picture == null)
+            {
+                return NotFound("图片不存在");
+            }
+            _touristRouteRepository.DeleteTouristRoutePicture(picture);
+            _touristRouteRepository.Save();
+
+            return NoContent();
+        }
+
     }
 }

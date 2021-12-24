@@ -94,5 +94,15 @@ namespace Tourist.API.Services
             pictureModel.TouristRouteId = touristRouteId;
             _context.TouristRoutesPictures.Add(pictureModel);
         }
+
+        public void DeleteTouristRoute(TouristRoute touristRoute)
+        {
+            _context.TouristRoutes.Remove(touristRoute);
+        }
+
+        public void DeleteTouristRoutePicture(TouristRoutePicture picture)
+        {
+            _context.TouristRoutesPictures.Remove(picture);
+        }
     }
 }
