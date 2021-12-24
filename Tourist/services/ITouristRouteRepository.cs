@@ -17,5 +17,7 @@ namespace Tourist.API.Services
         void AddTouristRoutePicture(Guid touristRouteId, TouristRoutePicture pictureModel);
         void DeleteTouristRoute(TouristRoute touristRoute);
         void DeleteTouristRoutePicture(TouristRoutePicture picture);
+        IEnumerable<TouristRoute> GetTouristRoutesByIdList(IEnumerable<Guid> touristIds);
+        void DeleteTouristRoutes(IEnumerable<TouristRoute> touristRoutes);
     }
 }

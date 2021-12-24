@@ -104,5 +104,16 @@ namespace Tourist.API.Services
         {
             _context.TouristRoutesPictures.Remove(picture);
         }
+
+        public IEnumerable<TouristRoute> GetTouristRoutesByIdList(IEnumerable<Guid> Ids)
+        {
+            return _context.TouristRoutes.Where(t => Ids.Contains(t.Id)).ToList();
+        }
+
+        public void DeleteTouristRoutes(IEnumerable<TouristRoute> touristRoutes)
+        {
+            _context.TouristRoutes.RemoveRange(touristRoutes);
+        }
+
     }
 }

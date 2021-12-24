@@ -9,6 +9,7 @@ using Tourist.API.Dtos;
 using Tourist.API.ResouceParameters;
 using Tourist.API.Models;
 using Microsoft.AspNetCore.JsonPatch;
+using Tourist.API.Helper;
 
 namespace Tourist.API.Controller
 {
@@ -119,6 +120,21 @@ namespace Tourist.API.Controller
             }
             var touristRoute = _touristRouteRepository.GetTouristRoute(touristRouteId);
             _touristRouteRepository.DeleteTouristRoute(touristRoute);
+            _touristRouteRepository.Save();
+
+            return NoContent();
+        }
+
+        [HttpDelete("({touristIds})")]
+        public IActionResult DeleteTouristRoutesByIds(
+            [ModelBinder(BinderType = typeof(ArrayModelBinder))][FromRoute]IEnumerable<Guid> touristIds)
+        {
+            if (touristIds == null)
+            {
+                return BadRequest();
+            }
+            var touristRoutes = _touristRouteRepository.GetTouristRoutesByIdList(touristIds);
+            _touristRouteRepository.DeleteTouristRoutes(touristRoutes);
             _touristRouteRepository.Save();
 
             return NoContent();
